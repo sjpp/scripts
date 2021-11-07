@@ -1,0 +1,39 @@
+#!/bin/bash
+# |-------------------------------------------------------------
+# | Nom         : sss
+# | Description : ssh based script that sets term title
+# |				: and changes background color
+# | Auteur      : sjpp
+# | Mise à jour : 14/07/2017
+# | Licence     : GNU GLPv2 ou ultérieure
+# |-------------------------------------------------------------
+
+_ORIG_BGCOLOR="#073642"
+_ORIG_TERMTITLE="zsh"
+
+while getopts ":rvnb" opt
+do
+    case "$opt" in
+        r ) _REMOTE_BGCOLOR="#2F0100" ;;
+        v ) _REMOTE_BGCOLOR="#003611" ;;
+        n ) _REMOTE_BGCOLOR="#111111" ;;
+        b ) _REMOTE_BGCOLOR="#002E51" ;;
+        * ) echo "Invalid option: -"$OPTARG" requires an argument" 1>&2
+            exit 1 ;
+    esac
+done
+shift $((OPTIND -1))
+
+# Set choosen background  color
+echo -e "\033]11;$_REMOTE_BGCOLOR\a"
+
+# Establish ssh connection with choosen parameters
+TERM=xterm-256color ssh -A -C $1  -t 'echo -ne "\033]0;$(echo $HOSTNAME | tr \[\:lower:] \[\:upper:])\007"; eval $SHELL'
+
+# When connection is closed, restore term title and background color
+echo -e "\033]11;$_ORIG_BGCOLOR\a"
+echo -e "\033]2;$_ORIG_TERMTITLE\007"
+
+exit 0
+
+# vim syntax=sh
