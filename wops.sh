@@ -5,21 +5,21 @@
 # |             : de travail sur tous les écrans ou seulement
 # |             : l'écran principal
 # | Auteur      : Sébastien Poher 
-# | Mise à jour : 16/06/2016
+# | Mise à jour : 30/03/2022
 # | Licence     : GNU GLPv2 ou ultérieure
 # |-------------------------------------------------------------
 
 # |-----------------------------------------------------------
 # | Définition des variables :
 
-_SETTINGS="org.gnome.shell.overrides workspaces-only-on-primary"
+_SETTINGS="org.gnome.mutter workspaces-only-on-primary"
 
 # |-----------------------------------------------------------
 # | Fonctions :
 # |-----------------------------------------------------------
 
 CheckState () {
-    _STATE=$(gsettings get org.gnome.shell.overrides workspaces-only-on-primary)
+    _STATE=$(gsettings get org.gnome.mutter workspaces-only-on-primary)
 }
 
 # |------------------------------------------------------------
