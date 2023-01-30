@@ -1,3 +1,12 @@
+#!/usr/bin/python3
+# |-------------------------------------------------------------
+# | Nom         : ldap_add.py
+# | Description : add user in FreeIPA LDAP
+# | Auteur      : sjpp
+# | Mise à jour : 14/07/2017
+# | Licence     : GNU GLPv2 ou ultérieure
+# |-------------------------------------------------------------
+
 from ldap3 import Server, Connection, ALL, MODIFY_ADD, MODIFY_REPLACE, SUBTREE
 from python_freeipa import Client
 import hashlib

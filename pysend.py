@@ -1,5 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
+# |-------------------------------------------------------------
+# | Nom         : pysend.py
+# | Description : MPD notification script
+# | Auteur      : sjpp
+# | Mise à jour : 14/07/2017
+# | Licence     : GNU GLPv2 ou ultérieure
+# |-------------------------------------------------------------
+
 
 import gi
 gi.require_version('Notify', '0.7')
